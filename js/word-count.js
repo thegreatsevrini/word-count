@@ -16,7 +16,9 @@ text.addEventListener('input', function(event){
     var str = text.value;
 
     //creates a new array out of the str
-    var wordArray = str.split(' ');
+    var wordArray = str.split(/[\n\r\s]+/g).filter(function(word) {
+        return word.length > 0;
+    });
 
     //displays the word counter
     wordCount.textContent = wordArray.length;
